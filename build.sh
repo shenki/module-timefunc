@@ -1,6 +1,6 @@
 #!/bin/bash
 
-KERNELDIR=/home/shenki/dev/kernel-benh \
+KERNELDIR=$HOME/dev/kernel-powerpc \
 ARCH=powerpc \
 CROSS_COMPILE=powerpc64le-linux-gnu- \
 make

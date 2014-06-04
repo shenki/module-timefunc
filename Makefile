@@ -1,5 +1,4 @@
 KERNELDIR ?= /lib/modules/$(shell uname -r)/build
-KERNELDIR = /home/shenki/dev/kernel-benh/
 
 ifeq ($(KERNELRELEASE),)
 
@@ -16,5 +15,7 @@ clean:
 else
 
 $(info Building with KERNELRELEASE = ${KERNELRELEASE})
-obj-m :=    timefunc.o
+obj-m		:= addone.o timefunc.o
+timefuncmod-y	:= timefunc.o
+addonemod-y	:= addone.o
 endif
