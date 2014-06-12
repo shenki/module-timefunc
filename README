@@ -1,0 +1,26 @@
+Function call overhead timer
+============================
+
+Joel Stanley <joel@jms.id.au>
+June 2014
+
+A pair of modules are used as on some architectures (powerpc) a call outside of
+a module to another module, or the kernel, will go through a trampoline/stub.
+
+Usage
+-----
+
+  $ make
+  $ sudo insmod ./addone.kp
+  $ suod insmod ./timefunc.ko
+  $ sudo echo > /sys/kernel/debug/timefunc
+  $ sudo cat /sys/kernel/debug/timefunc
+  12341234
+
+The number is the number of nanoseconds taken to call the function in addone.ko
+iters time, where iters is a parameter passed to timefunc.ko. It defaults to
+100000000.
+
+A one liner for running the test a number of times in a row might look like:
+
+  $ for i in $(seq 1 10); do echo > functime; cat functime >> ~/results.txt; done
