@@ -66,7 +66,7 @@ static const struct file_operations fops = {
 int init(void)
 {
         last = 0;
-        file = debugfs_create_file("functime", 0660, NULL, &last, &fops);
+        file = debugfs_create_file("timefunc", 0660, NULL, &last, &fops);
         if (!file)
                 return -ENODEV;
         return 0;
